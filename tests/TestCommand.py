@@ -68,6 +68,35 @@ class CommandTestCase(common.BleachbitTestCase):
         self.assertEqual(ret['path'], path)
         self.assertNotExists(path)
 
+    def test_Function_mcdc148I(self):
+        def retFalse():
+            return False
+        
+        path = None
+        cmd = Function(path, retFalse, 'bar')
+        ret = next(cmd.execute(True))
+        print(ret)
+    
+    def test_Function_mcdc148II(self):
+        def retTup():
+            return (1)
+        
+        path = None
+        cmd = Function(path, retTup, 'bar')
+        ret = next(cmd.execute(True))
+        print(ret)
+
+
+    def test_Function_mcdc148III(self):
+        def retTup():
+            return True
+        
+        path = None
+        cmd = Function(path, retTup, 'bar')
+        ret = next(cmd.execute(True))
+        print(ret)
+
+
     def test_Shred(self):
         """Unit test for Shred"""
         self.test_Delete(Shred)
